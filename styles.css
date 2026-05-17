@@ -1,0 +1,275 @@
+:root {
+  color-scheme: dark;
+  --bg: #111;
+  --panel: #1f1f2a;
+  --text: #eee;
+  --muted: #bbb;
+  --highlight: #ffb86c;
+  --found: #50fa7b;
+  --water: #6272a4;
+  --border: #2f2f42;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Inter, system-ui, sans-serif;
+  background: radial-gradient(circle at top, #18202f 0%, #090a10 55%);
+  color: var(--text);
+}
+
+main {
+  max-width: 980px;
+  margin: 24px auto;
+  padding: 0 18px 36px;
+}
+
+h1 {
+  margin-bottom: 24px;
+  font-size: clamp(2rem, 3vw, 3rem);
+}
+
+.panel {
+  margin-bottom: 32px;
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--panel);
+}
+
+.panel h2 {
+  margin-top: 0;
+}
+
+label {
+  display: block;
+  margin: 14px 0 6px;
+  color: var(--muted);
+}
+
+input {
+  width: 100%;
+  padding: 10px 12px;
+  background: #11131b;
+  border: 1px solid #2d3245;
+  border-radius: 10px;
+  color: var(--text);
+}
+
+.buttons {
+  margin: 16px 0;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+button {
+  border: none;
+  border-radius: 12px;
+  padding: 10px 16px;
+  background: #6272a4;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    transform 0.15s ease,
+    background 0.15s ease;
+}
+
+button:hover {
+  background: #7287c0;
+  transform: translateY(-1px);
+}
+
+.status {
+  min-height: 26px;
+  margin-bottom: 14px;
+  color: var(--muted);
+}
+
+.visual {
+  min-height: 180px;
+  padding: 14px;
+  border: 1px dashed #30364d;
+  border-radius: 14px;
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.02),
+    transparent 80%
+  );
+  overflow-x: auto;
+}
+
+.bar {
+  position: relative;
+  width: 36px;
+  border-radius: 10px 10px 0 0;
+  background: #44475a;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.bar span {
+  position: absolute;
+  bottom: -24px;
+  font-size: 11px;
+  white-space: nowrap;
+  color: var(--muted);
+}
+
+.bar.highlight {
+  background: var(--highlight);
+}
+
+.bar.found {
+  background: var(--found);
+}
+
+.bar.left-pointer::after,
+.bar.right-pointer::after {
+  content: attr(data-label);
+  position: absolute;
+  top: -20px;
+  font-size: 11px;
+  color: var(--text);
+}
+
+.bar.water::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: var(--water-height, 0px);
+  background: rgba(98, 114, 164, 0.65);
+}
+
+.bar.low {
+  border: 2px solid #8be9fd;
+}
+
+.bar.high {
+  border: 2px solid #f1fa8c;
+}
+
+.bar.mid {
+  border: 2px solid #ff79c6;
+}
+
+.bar.left-pointer {
+  border-top: 2px solid #8be9fd;
+}
+
+.bar.right-pointer {
+  border-top: 2px solid #ffb86c;
+}
+
+.top-nav {
+  margin-bottom: 16px;
+}
+
+.top-nav a {
+  color: var(--highlight);
+  text-decoration: none;
+}
+
+.intro {
+  margin-bottom: 24px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+}
+
+.card {
+  display: block;
+  padding: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.02);
+  color: inherit;
+  text-decoration: none;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.15);
+}
+
+.memory-panel,
+.trace-panel {
+  min-height: 120px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 14px;
+  border: 1px dashed #30364d;
+  border-radius: 14px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.02),
+    transparent 80%
+  );
+}
+
+.memory-cell {
+  min-width: 80px;
+  padding: 10px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text);
+}
+
+.memory-cell.active {
+  background: rgba(255, 184, 108, 0.14);
+  border-color: rgba(255, 184, 108, 0.35);
+}
+
+.memory-value {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.memory-address {
+  margin-top: 6px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.memory-note {
+  margin-top: 8px;
+  font-size: 0.8rem;
+  color: var(--highlight);
+}
+
+.trace-entry {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.trace-entry strong {
+  color: var(--highlight);
+}

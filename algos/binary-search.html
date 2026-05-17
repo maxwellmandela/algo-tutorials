@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Binary Search Visualization</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <main>
+      <nav class="top-nav">
+        <a href="../index.html">← Back to algorithm library</a>
+      </nav>
+      <h1>Binary Search</h1>
+      <p class="intro">
+        This page shows binary search step-by-step with a memory layout and
+        machine trace for learners.
+      </p>
+
+      <section class="panel">
+        <h2>Step-by-step visualization</h2>
+        <label for="binary-array">Sorted array (comma-separated):</label>
+        <input id="binary-array" value="1,2,3,4,5,6,7,8,9" />
+        <label for="binary-target">Target value:</label>
+        <input id="binary-target" value="5" type="number" />
+        <div class="buttons">
+          <button id="binary-run">Run Binary Search</button>
+          <button id="binary-reset">Reset</button>
+        </div>
+        <div id="binary-status" class="status"></div>
+        <div id="binary-visual" class="visual"></div>
+      </section>
+
+      <section class="panel">
+        <h2>Memory layout</h2>
+        <p>
+          Simulated contiguous array storage in RAM, with low/mid/high pointers.
+        </p>
+        <div id="binary-memory" class="memory-panel"></div>
+      </section>
+
+      <section class="panel">
+        <h2>Machine trace</h2>
+        <p>Shows the algorithm’s decisions in plain language.</p>
+        <div id="binary-trace" class="trace-panel"></div>
+      </section>
+    </main>
+    <script src="../script.js"></script>
+  </body>
+</html>
